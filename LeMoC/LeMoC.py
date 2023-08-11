@@ -275,7 +275,7 @@ with open(out1,'w') as f1, open(out2,'w') as f2:
             photons = f.photons_tot(nu_syn,nu_bb,photons_syn,nu_ic,photons_IC,nu_tot,dN_dVdnu_BB*f.Volume(Radius),dN_dVdnu_pl*f.Volume(Radius),dN_dVdnu_user*f.Volume(Radius))/f.Volume(Radius)
             Spec_temp_tot = np.multiply(photons,h*nu_tot**2.)*4.*np.pi/3.*Radius**2.*c  
             pr1 = [[str(el_list) for el_list in np.log10(g_el) ],[str(el_list) for el_list in np.log10(N_el/f.Volume(Radius)) ]]
-            pr2 = [[str(el_list) for el_list in np.log10(nu_tot*delta) ],[str(el_list) for el_list in np.log10(Spec_temp_tot) ]]
+            pr2 = [[str(el_list) for el_list in np.log10(nu_tot) ],[str(el_list) for el_list in np.log10(Spec_temp_tot) ]]
             # here is where you unpack everything
             for row in zip(*pr1):
                 f1.write(' '.join(row) + '\n')

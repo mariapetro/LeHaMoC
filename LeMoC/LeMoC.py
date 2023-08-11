@@ -1,5 +1,5 @@
 # This is the leptonic version of a radiative transfer code LeHaMoC developed by S. I. Stathopoulos 
-# (in collaboration with M. Petropoulou). If using this code, make reference to the
+# in collaboration with M. Petropoulou. When using this code, make reference to the
 # following publication: Stathopoulos et al., 2023, A&A
  
 

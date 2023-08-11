@@ -1,16 +1,27 @@
 # LeMoC: Leptonic Modeling Code for High-Energy Astrophysical Sources
 
-LeMoC is a versatile time-dependent leptonic modeling code designed for simulating high-energy astrophysical sources. It simulates the behavior of relativistic electrons interacting with magnetic fields and photons in a spherical region.
+LeMoC is the leptonic module of a versatile time-dependent lepto-hadronic modeling code designed for simulating high-energy astrophysical sources. It simulates the behavior of relativistic electrons interacting with magnetic fields and photons in a spherical region. The physical processes that are included are:
+
+- Synchrotron emission and self-absorption
+- Inverse Compton scattering
+- Photon-photon pair production 
+- Adiabatic energy losses
+
+The user can also model expanding spherical sources with a variable magnetic field strength. The user can also define 3 types of external radiation fields: 
+
+- grey body or black body
+- power law 
+- tabulated
 
 ## Files Included
 
-1. **LeMoC.py**: This file contains the main code for the LeMoC simulation. It takes user-defined parameters from `Parameters.txt` to set up the simulation.
+1. **LeMoC.py**: This file contains the main code for the LeMoC simulation. It takes user-defined parameters from `Parameters*.txt` to set up the simulation.
 
-2. **Parameters.txt**: Users should edit this file to specify the parameters for their simulation. This includes setting up the initial conditions, time interval, and other relevant parameters.
+2. **Parameters.txt**: Users should edit this file to specify the parameters for their simulation. This includes setting up the initial conditions, time interval, and other relevant parameters. There are currently two input files ready for use that correspond to Tests 1 and 3 described in Stathopoulos et al.
 
 3. **LeMoC_f.py**: This file includes all the necessary formulas for calculating emissivities and energy loss rates for various processes such as Synchrotron, Inverse Compton (IC), gamma-gamma absorption, pair creation, and Synchrotron self-absorption.
 
-4. **Plotting_Tool.ipynb**: This Jupyter Notebook provides a tool for users to visualize and analyze the simulation results. Users can generate plots to better understand the behavior of the simulated astrophysical source.
+4. **Plotting_Tool.ipynb**: This Jupyter Notebook provides a simple interface for users to visualize and analyze the simulation results. Users can generate plots to better understand the behavior of the simulated astrophysical source.
 
 ## Getting Started
 
@@ -54,6 +65,8 @@ To configure the LeMoC simulation, you can customize various parameters in the `
 
 - **delta**: Doppler factor.
 
+- **inj_flag**: Electron injection profile (1 for continuous, 0 for instantaneous)
+
 - **Ad_l_flag**: Adiabatic losses flag (1 to include, 0 to exclude).
 
 - **Syn_l_flag**: Synchrotron losses flag (1 to include, 0 to exclude).
@@ -89,7 +102,10 @@ To configure the LeMoC simulation, you can customize various parameters in the `
 - **User_ph**: External user photon field flag (1 to include, 0 to exclude). If included, provide a `.txt` file named 'Photons_spec_user.txt' with columns (nu[Hz],dN/dVdnu[cm^{-3}Hz^{-1}]).      
 
 
-3. Run the `LeMoC.py` code using a compatible Python interpreter. Make sure to have all necessary dependencies installed.
+3. Run the `LeMoC.py` code using a compatible Python interpreter. Make sure to have all necessary dependencies installed. Example:
+
+- python LeMoC.py Parameters_Test3.txt Test3
+
 
 4. Once the simulation is complete, open the `Plotting_Tool.ipynb` notebook to visualize and analyze the simulation results. Follow the instructions provided in the notebook.
 

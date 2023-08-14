@@ -104,7 +104,7 @@ To configure the LeMoC simulation, you can customize various parameters in the `
 
 3. Run the `LeMoC.py` code using a compatible Python interpreter. Make sure to have all necessary dependencies installed. Example:
 
-- python LeMoC.py Parameters_Test3.txt Test3
+- *python LeMoC.py Parameters_Test3.txt Test3*
 
 
 4. Once the simulation is complete, open the `Plotting_Tool.ipynb` notebook to visualize and analyze the simulation results. Follow the instructions provided in the notebook.

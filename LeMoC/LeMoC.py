@@ -89,7 +89,7 @@ nu_max_ph = float(params['nu_max_ph'])
 s_ph = float(params['s_ph'])
 User_ph = float(params['User_ph'])
 
-import LeMoC_f as f # imports functions
+import LeHaMoC_f as f # imports functions
  
 import time
 start_time = time.time()

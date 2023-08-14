@@ -19,7 +19,7 @@ The user can also model expanding spherical sources with a variable magnetic fie
 
 2. **Parameters.txt**: Users should edit this file to specify the parameters for their simulation. This includes setting up the initial conditions, time interval, and other relevant parameters. There are currently two input files ready for use that correspond to Tests 1 and 3 described in Stathopoulos et al.
 
-3. **LeMoC_f.py**: This file includes all the necessary formulas for calculating emissivities and energy loss rates for various processes such as Synchrotron, Inverse Compton (IC), gamma-gamma absorption, pair creation, and Synchrotron self-absorption.
+3. **LeHaMoC_f.py**: This file includes all the necessary formulas for calculating emissivities and energy loss rates for various processes such as Synchrotron, Inverse Compton (IC), gamma-gamma absorption, pair creation, and Synchrotron self-absorption.
 
 4. **Plotting_Tool.ipynb**: This Jupyter Notebook provides a simple interface for users to visualize and analyze the simulation results. Users can generate plots to better understand the behavior of the simulated astrophysical source.
 

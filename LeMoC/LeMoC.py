@@ -268,7 +268,8 @@ with open(out1,'w') as f1, open(out2,'w') as f2:
             a_gg_f = np.zeros(len(nu_ic))
         else: 
             a_gg_f = f.a_gg(nu_ic,nu_tot,photons)
-            Q_ee = f.Q_ee_f(nu_tot,photons,nu_ic,photons_IC/f.Volume(Radius),g_el,Radius)                  
+            Q_ee = f.Q_ee_f(nu_tot,photons,nu_tot,photons,g_el,Radius)                  
+            #Q_ee = f.Q_ee_f(nu_tot,photons,nu_ic,photons_IC/f.Volume(Radius),g_el,Radius) Use this only if photons_IC interact with photons             
 
         if day_counter<time_real:
             day_counter=day_counter+step_alg*R0/c

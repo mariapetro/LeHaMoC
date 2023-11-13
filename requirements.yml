@@ -1,0 +1,19 @@
+# requirements.yml
+
+python: 3.8.5
+packages:
+  - name: numpy
+    version: 1.21.5
+  - name: astropy
+    version: 5.0.4
+  - name: matplotlib
+    version: 3.5.1
+  - name: pandas
+    version: 1.4.2
+  - name: tqdm
+    version: 4.64.0
+  - name: shapely
+    version: 1.7.1
+  - name: scipy
+    version: 1.7.3
+

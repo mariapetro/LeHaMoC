@@ -111,7 +111,7 @@ To configure the LeMoC simulation, you can customize various parameters in the `
 
 ## Dependencies
 
-- Python 3
+- Python 3 (check also the .yml file)
 
 
 ## Contributing
@@ -120,4 +120,4 @@ If you'd like to contribute to this project, feel free to fork the repository an
 
 ## License
 
-This project is licensed under the [LICENSE]
+This project is licensed under the [GNU GPLv3]

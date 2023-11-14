@@ -1,4 +1,4 @@
-# This is the leptohadronic version of a radiative transfer code LeHaMoC. 
+# This is the leptonic version of a radiative transfer code LeHaMoC. 
 # Copyright (C) 2023  S. I. Stathopoulos, M. Petropoulou.  
 # When using this code, make reference to the following 
 # publication: Stathopoulos et al., 2023, A&A    

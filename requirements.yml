@@ -1,6 +1,6 @@
 # requirements.yml
 
-python: 3.8.5
+python: 3.9.12
 packages:
   - name: numpy
     version: 1.21.5

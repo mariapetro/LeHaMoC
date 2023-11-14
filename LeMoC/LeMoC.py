@@ -1,6 +1,16 @@
-# This is the leptonic version of a radiative transfer code LeHaMoC developed by S. I. Stathopoulos 
-# in collaboration with M. Petropoulou. When using this code, make reference to the
-# following publication: Stathopoulos et al., 2023, A&A
+# This is the leptohadronic version of a radiative transfer code LeHaMoC. 
+# Copyright (C) 2023  S. I. Stathopoulos, M. Petropoulou.  
+# When using this code, make reference to the following 
+# publication: Stathopoulos et al., 2023, A&A    
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation (check licence).
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
  
 
 import numpy as np

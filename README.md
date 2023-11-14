@@ -30,89 +30,126 @@ The user can also model expanding spherical sources with a variable magnetic fie
 
 ## Getting Started
 
-1. Clone this repository to your local machine using `git clone <repository-url>`
+i. Clone this repository to your local machine using `git clone <repository-url>`
 
-2. Edit the `Parameters.txt` file to set up the initial conditions and simulation parameters according to your needs.
+ii. Edit the `Parameters.txt` file to set up the initial conditions and simulation parameters according to your needs.
 
 ## Simulation Parameters
 
 To configure the LeHaMoC simulation, you can customize various parameters in the `Parameters.txt` file:
 
-- **time_init**: Initial time of the simulation, measured in units of the initial radius over the speed of light (R0/c).
+1. **time_init**: Initial time of the simulation, measured in units of the initial radius over the speed of light (R0/c).
 
-- **time_end**: The final time of the simulation, also measured in units of the initial radius over the speed of light (R0/c).
+2. **time_end**: The final time of the simulation, also measured in units of the initial radius over the speed of light (R0/c).
 
-- **step_alg**: Step size used in the algorithm, expressed in units of the initial radius over the speed of light (R0/c).
+3. **step_alg**: Step size used in the algorithm, expressed in units of the initial radius over the speed of light (R0/c).
 
-- **g_min_el**: Minimum Lorentz factor of electrons on the grid.
+4. **PL_inj**: Power law injection flag (1 to include, 0 to use distribution with exponential cut-offs).
 
-- **g_max_el**: Maximum Lorentz factor of electrons on the grid.
+5. **g_min_el**: Minimum Lorentz factor of electrons on the grid.
 
-- **g_PL_min**: Minimum Lorentz factor of power-law electrons.
+6. **g_max_el**: Maximum Lorentz factor of electrons on the grid.
 
-- **g_PL_max**: Maximum Lorentz factor of power-law electrons.
+7. **g_el_PL_min**: Minimum Lorentz factor of power-law electrons.
 
-- **grid_g_el**: Number of grid points between g_min_el and g_max_el.
+8. **g_el_PL_max**: Maximum Lorentz factor of power-law electrons.
 
-- **grid_nu**: Number of grid points for photons' frequency.
+9. **grid_g_el**: Number of grid points between g_min_el and g_max_el.
 
-- **p_el**: Power-law index of the electron distribution.
+10. **g_min_pr**: Minimum Lorentz factor of protons on the grid.
 
-- **L_el**: Luminosity of electrons in erg s^{-1}.
+11. **g_max_pr**: Maximum Lorentz factor of protons on the grid.
 
-- **Vexp**: Expansion velocity in units of the speed of light (c).
+12. **g_pr_PL_min**: Minimum Lorentz factor of power-law protons.
 
-- **R0**: Common logarithm of the initial radius of the spherical blob in centimeters (cm).
+13. **g_pr_PL_max**: Maximum Lorentz factor of power-law protons.
 
-- **B0**: Magnetic field intensity in Gauss (G).
+14. **grid_g_pr**: Number of grid points between g_min_pr and g_max_pr.
 
-- **m**: Power-law index of the magnetic field due to source expansion.
+15. **grid_nu**: Number of grid points for photons' frequency.
 
-- **delta**: Doppler factor.
+16. **p_el**: Power-law index of the electron distribution.
 
-- **inj_flag**: Electron injection profile (1 for continuous, 0 for instantaneous)
+17. **L_el**: Luminosity of electrons in erg s^{-1}.
 
-- **Ad_l_flag**: Adiabatic losses flag (1 to include, 0 to exclude).
+18. **p_pr**: Power-law index of the proton distribution.
 
-- **Syn_l_flag**: Synchrotron losses flag (1 to include, 0 to exclude).
+19. **L_pr**: Luminosity of protons in erg s^{-1}.
 
-- **Syn_emis_flag**: Synchrotron emission flag (1 to include, 0 to exclude).
+20. **Vexp**: Expansion velocity in units of the speed of light (c).
 
-- **IC_l_flag**: Inverse Compton scattering losses flag (1 to include, 0 to exclude).
+21. **R0**: Common logarithm of the initial radius of the spherical blob in centimeters (cm).
 
-- **IC_emis_flag**: Inverse Compton scattering emission flag (1 to include, 0 to exclude).
+22. **B0**: Magnetic field intensity in Gauss (G).
 
-- **SSA_l_flag**: Synchrotron Self-absorption losses flag (1 to include, 0 to exclude).
+23. **m**: Power-law index of the magnetic field due to source expansion.
 
-- **gg_flag**: Gamma-gamma absorption-emission flag (1 to include, 0 to exclude).
+24. **delta**: Doppler factor.
 
-- **esc_flag**: Escape of electrons and photons flag (1 to include, 0 to exclude).
+25. **inj_flag**: Electron injection profile (1 for continuous, 0 for instantaneous).
 
-- **BB_flag**: Black body flag (1 to include, 0 to exclude).
+26. **Ad_l_flag**: Adiabatic losses flag (1 to include, 0 to exclude).
 
-- **BB_temperature**: Common logarithm of the Black body temperature in Kelvin (K).
+27. **Syn_l_flag**: Synchrotron losses flag (1 to include, 0 to exclude).
 
-- **GB_ext**: External Grey Body photon field flag (1 to include, 0 to exclude).
+28. **Syn_emis_flag**: Synchrotron emission flag (1 to include, 0 to exclude).
 
-- **PL_flag**: External power-law photon field flag.
+29. **IC_l_flag**: Inverse Compton scattering losses flag (1 to include, 0 to exclude).
 
-- **dE_dV_ph**: Energy density in erg cm^{-3} of the external power-law photon field.
+30. **IC_emis_flag**: Inverse Compton scattering emission flag (1 to include, 0 to exclude).
 
-- **nu_min_ph**: Minimum frequency of the power-law photon field.
+31. **SSA_l_flag**: Synchrotron Self-absorption losses flag (1 to include, 0 to exclude).
 
-- **nu_max_ph**: Maximum frequency of the power-law photon field.
+32. **gg_flag**: Gamma-gamma absorption-emission flag (1 to include, 0 to exclude).
 
-- **s_ph**: Power-law index of the power-law photon field.
+33. **pg_pi_l_flag**: Photopion losses flag (1 to include, 0 to exclude).
 
-- **User_ph**: External user photon field flag (1 to include, 0 to exclude). If included, provide a `.txt` file named 'Photons_spec_user.txt' with columns (nu[Hz],dN/dVdnu[cm^{-3}Hz^{-1}]).      
+34. **pg_pi_emis_flag**: Photopion emission flag (1 to include, 0 to exclude).
 
+35. **pg_BH_l_flag**: Bethe-Heitler losses flag (1 to include, 0 to exclude).
 
-3. Run the `LeHaMoC.py` code using a compatible Python interpreter. Make sure to have all necessary dependencies installed. Example:
+36. **pg_BH_emis_flag**: Bethe-Heitler losses flag (1 to include, 0 to exclude).
+
+37. **n_H**: Number density of cold protons in #/cm^{3}.
+
+38. **pp_l_flag**: Proton-proton (pp) losses flag (1 to include, 0 to exclude).
+
+39. **pp_ee_emis_flag**: Pairs emission from pp interactions flag (1 to include, 0 to exclude).
+
+40. **pp_g_emis_flag**: Photon emission from pp interactions flag (1 to include, 0 to exclude).
+
+41. **pp_nu_emis_flag**: Neutrino emission from pp interactions flag (1 to include, 0 to exclude).
+
+42. **neutrino_flag**: Neutrino flag for photopion interactions flag (1 to include, 0 to exclude).
+
+43. **esc_flag_el**: Escape of pairs flag (1 to include, 0 to exclude).
+
+44. **esc_flag_pr**: Escape of protons flag (1 to include, 0 to exclude).
+
+45. **BB_flag**: Black body flag (1 to include, 0 to exclude).
+
+46. **BB_temperature**: Common logarithm of the Black body temperature in Kelvin (K).
+
+47. **GB_ext**: External Grey Body photon field flag (1 to include, 0 to exclude).
+
+48. **PL_flag**: External power-law photon field flag.
+
+49. **dE_dV_ph**: Energy density in erg cm^{-3} of the external power-law photon field.
+
+50. **nu_min_ph**: Minimum frequency of the power-law photon field.
+
+51. **nu_max_ph**: Maximum frequency of the power-law photon field.
+
+52. **s_ph**: Power-law index of the power-law photon field.
+
+53. **User_ph**: External user photon field flag (1 to include, 0 to exclude). If included, provide a .txt file named 'Photons_spec_user.txt' with columns (nu[Hz],dN/dVdnu[cm^{-3}Hz^{-1}]).
+
+iii. Run the `LeHaMoC.py` code using a compatible Python interpreter. Make sure to have all necessary dependencies installed. Example:
 
 - *python LeMoC.py Parameters_Test3.txt Test3*
 
 
-4. Once the simulation is complete, open the `Plotting_Tool.ipynb` notebook to visualize and analyze the simulation results. Follow the instructions provided in the notebook.
+iv. Once the simulation is complete, open the `Plotting_Tool.ipynb` notebook to visualize and analyze the simulation results. Follow the instructions provided in the notebook.
 
 ## Dependencies
 

@@ -38,7 +38,7 @@ The user can also model expanding spherical sources with a variable magnetic fie
 
 ## Simulation Parameters
 
-To configure the LeMoC simulation, you can customize various parameters in the `Parameters.txt` file:
+To configure the LeHaMoC simulation, you can customize various parameters in the `Parameters.txt` file:
 
 - **time_init**: Initial time of the simulation, measured in units of the initial radius over the speed of light (R0/c).
 
@@ -109,7 +109,7 @@ To configure the LeMoC simulation, you can customize various parameters in the `
 - **User_ph**: External user photon field flag (1 to include, 0 to exclude). If included, provide a `.txt` file named 'Photons_spec_user.txt' with columns (nu[Hz],dN/dVdnu[cm^{-3}Hz^{-1}]).      
 
 
-3. Run the `LeMoC.py` code using a compatible Python interpreter. Make sure to have all necessary dependencies installed. Example:
+3. Run the `LeHaMoC.py` code using a compatible Python interpreter. Make sure to have all necessary dependencies installed. Example:
 
 - *python LeMoC.py Parameters_Test3.txt Test3*
 

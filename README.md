@@ -1,17 +1,20 @@
-# LeMoC: Leptonic Modeling Code for High-Energy Astrophysical Sources
+# LeHaMoC: Leptonic-Hadronic Modeling Code for High-Energy Astrophysical Sources
 
-LeMoC is the leptonic module of a versatile time-dependent lepto-hadronic modeling code designed for simulating high-energy astrophysical sources. It simulates the behavior of relativistic electrons interacting with magnetic fields and photons in a spherical region. The physical processes that are included are:
+LeHaMoC is a leptohadronic modeling code designed for simulating high-energy astrophysical sources. It simulates the behavior of relativistic pairs, protons interacting with magnetic fields and photons in a spherical region. The physical processes that are included are:
 
-- Synchrotron emission and self-absorption
-- Inverse Compton scattering
-- Photon-photon pair production 
-- Adiabatic energy losses
+-Synchrotron emission and self-absorption
+-Inverse Compton scattering
+-Photon-photon pair production
+-Adiabatic losses
+-Proton-photon pion production 
+-Proton-photon (Bethe-Heitler) pair production 
+-Proton-proton collisions 
 
-The user can also model expanding spherical sources with a variable magnetic field strength. The user can also define 3 types of external radiation fields: 
+The user can also model expanding spherical sources with a variable magnetic field strength. The user can also define 3 types of external radiation fields:
 
-- grey body or black body
-- power law 
-- tabulated
+-Grey body or black body
+-Power-law
+-Tabulated
 
 ## Files Included
 

@@ -2,20 +2,14 @@
 
 LeHaMoC is a leptohadronic modeling code designed for simulating high-energy astrophysical sources. It simulates the behavior of relativistic pairs, protons interacting with magnetic fields and photons in a spherical region. The physical processes that are included are:
 
--Synchrotron emission and self-absorption
 
--Inverse Compton scattering
-
--Photon-photon pair production
-
--Adiabatic losses
-
--Proton-photon pion production 
-
--Proton-photon (Bethe-Heitler) pair production
-
--Proton-proton collisions 
-
+1. Synchrotron emission and self-absorption
+2. Inverse Compton scattering
+3. Photon-photon pair production
+4. Adiabatic losses 
+5. Proton-photon pion production 
+6. Proton-photon (Bethe-Heitler) pair production
+7. Proton-proton collisions 
 
 The user can also model expanding spherical sources with a variable magnetic field strength. The user can also define 3 types of external radiation fields:
 
@@ -34,6 +28,7 @@ The user can also model expanding spherical sources with a variable magnetic fie
 3. **LeHaMoC_f.py**: This file includes all the necessary formulas for calculating emissivities and energy loss rates for various processes such as Synchrotron, Inverse Compton (IC), gamma-gamma absorption, pair creation, and Synchrotron self-absorption.
 
 4. **Plotting_Tool.ipynb**: This Jupyter Notebook provides a simple interface for users to visualize and analyze the simulation results. Users can generate plots to better understand the behavior of the simulated astrophysical source.
+
 
 ## Getting Started
 

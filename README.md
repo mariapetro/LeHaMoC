@@ -146,7 +146,7 @@ To configure the LeHaMoC simulation, you can customize various parameters in the
 
 iii. Run the `LeHaMoC.py` code using a compatible Python interpreter. Make sure to have all necessary dependencies installed. Example:
 
-- *python LeMoC.py Parameters_Test3.txt Test3*
+- *python LeHaMoC.py Parameters_Test3.txt Test3*
 
 
 iv. Once the simulation is complete, open the `Plotting_Tool.ipynb` notebook to visualize and analyze the simulation results. Follow the instructions provided in the notebook.

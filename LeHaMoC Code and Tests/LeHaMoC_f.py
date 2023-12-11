@@ -51,7 +51,7 @@ K_pi = 0.17
 E_nu_space = np.logspace(10.,22.,50)*eV
 
 #Read parameters file
-fileName = "Parameters_full.txt"
+fileName = "Parameters.txt"
 fileObj = open(fileName)
 params = {}
 for line in fileObj:

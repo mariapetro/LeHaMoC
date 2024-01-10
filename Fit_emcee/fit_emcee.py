@@ -17,10 +17,10 @@ import timeit
 import sys
 import os 
 
-if len(sys.argv) != 3:
+if len(sys.argv) != 4:
     print('missing code module')
     print('try something like this')
-    print('python fit_uplim_emcee.py LeMoC 1000')
+    print('python fit_emcee.py LeMoC 1000 _folderName')
     quit()
 
 # Read from terminal code module -- leptonic or hadronic
@@ -36,13 +36,26 @@ D = 3262   # luminosity distance (Mpc)
 z = 0.557  # redshift
 
 # Create directory for saving chains
-directory = 'chains/'+flag_c
+directory = 'chains'+sys.argv[3]+'/'+flag_c
 path = os.path.join(directory) 
+
 try:
-    os.makedirs(path, exist_ok = True)
+    os.makedirs(path)
     print("Directory '%s' created successfully" % directory)
+except FileExistsError:
+    # If the directory exists create one with a suffix to prevent overwriting existing chains from previous code runs 
+    suffix = 1
+    while True:
+        new_directory = f'{directory}_{suffix}'
+        new_path = os.path.join(new_directory)
+        try:
+            os.makedirs(new_path, exist_ok=False)
+            print("Directory '%s' created successfully" % new_directory)
+            break  
+        except OSError as error:
+            suffix += 1 
 except OSError as error:
-    print("Directory '%s' can not be created" % directory)
+    print("Directory '%s' can not be created" % directory)    
 
 #######################
 #SED file reader # 

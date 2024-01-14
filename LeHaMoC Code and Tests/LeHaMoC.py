@@ -53,19 +53,21 @@ eV = (u.eV).to(u.erg)
 B_cr = 2*np.pi*m_el**2*c**3/(h*q)
 ################################
 
-if len(sys.argv) != 1:
+if len(sys.argv) != 3:
     print('incorrect parameters passed')
     print('try something like this')
-    print('python LeHaMoC.py Parameters.txt out1')
+    print('python LeHaMoC.py Parameters.txt _fileName')
     quit()
 
+out_s = sys.argv[2]    
+    
 #Define output files
-out1 = "Pairs_Distribution.txt"
-out2 = "Photons_Distribution.txt"
-out3 = "Protons_Distribution.txt"
-out4 = "Neutrinos_Distribution.txt"
+out1 = "Pairs_Distribution"+out_s+".txt"
+out2 = "Photons_Distribution"+out_s+".txt"
+out3 = "Protons_Distribution"+out_s+".txt"
+out4 = "Neutrinos_Distribution"+out_s+".txt"
 
-fileName = "Parameters.txt"
+fileName = sys.argv[1] 
 fileObj = open(fileName)
 params = {}
 for line in fileObj:

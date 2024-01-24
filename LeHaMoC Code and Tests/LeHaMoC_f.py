@@ -659,7 +659,7 @@ def Q_BH_sol(g_el,g_pr,N_pr,nu_trgt,photons_trgt,intrp_cs_m,intrp_cs_p,max_intrp
             dnde[i] = 0.
         else:
             dnde[i] = integrate.simpson(g_pr_int*g_pr,np.log(g_pr)) 
-    return c*dnde                                    
+    return c*dnde  # A factor of 2 should be included to account for energy conservation                               
 
 #computes correction factor in electron injection luminosity by checking the energy balance in a fast synchrotron cooling scenario
 def cor_factor_syn_el(g_el_space,R0,B0,p_el,Lum_e_injected):

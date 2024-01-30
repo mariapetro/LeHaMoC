@@ -1,6 +1,6 @@
 # This is the leptohadronic version of a radiative transfer code LeHaMoC. 
 # Copyright (C) 2023  S. I. Stathopoulos, M. Petropoulou.  
-# When using this code, make reference to the following 
+# When using this code, refer to the following 
 # publication: Stathopoulos et al., 2023, A&A    
 
 # This program is free software: you can redistribute it and/or modify
@@ -421,15 +421,15 @@ with open(out1,'w') as f1, open(out2,'w') as f2, open(out3,'w') as f3, open(out4
             day_counter=day_counter+step_alg*R0/c
             photons = f.photons_tot(nu_syn,nu_bb,photons_syn,nu_ic,photons_IC,nu_tot,dN_dVdnu_BB*f.Volume(Radius),dN_dVdnu_pl*f.Volume(Radius),dN_dVdnu_user*f.Volume(Radius))/f.Volume(Radius)
             Spec_temp_tot = np.multiply(photons,h*nu_tot**2.)*4.*np.pi/3.*Radius**2.*c  
-            pr1 = [[str(el_list) for el_list in np.log10(g_el) ],[str(el_list) for el_list in np.log10(dN_el_dVdg_el) ]]
-            pr2 = [[str(el_list) for el_list in np.log10(nu_tot) ],[str(el_list) for el_list in np.log10(Spec_temp_tot) ]]
-            pr3 = [[str(el_list) for el_list in np.log10(g_pr) ],[str(el_list) for el_list in np.log10(dN_pr_dVdg_pr) ]]
-            pr4 = [[str(el_list) for el_list in np.log10(nu_nu) ],[str(el_list) for el_list in np.log10(N_nu) ]]
-            # here is where you unpack everything
+            pr1 = [[str(el_list) for el_list in np.log10(g_el) ],[str(el_list) for el_list in np.log10(dN_el_dVdg_el) ]] #np.log10(\gamma_{el}), np.log10(dN_{el}/(dV d\gamma_{el}))
+            pr2 = [[str(el_list) for el_list in np.log10(nu_tot) ],[str(el_list) for el_list in np.log10(Spec_temp_tot) ]] #np.log10(\nu), np.log10(dN/(dV d\nu))
+            pr3 = [[str(el_list) for el_list in np.log10(g_pr) ],[str(el_list) for el_list in np.log10(dN_pr_dVdg_pr) ]] #np.log10(\gamma_{pr}), np.log10(dN_{pr}/(dV d\gamma_{pr}))
+            pr4 = [[str(el_list) for el_list in np.log10(nu_nu) ],[str(el_list) for el_list in np.log10(N_nu) ]] #np.log10(E_{\nu}/h), np.log10(dN/d(E_{\nu}/h)) 
+            # Here is where you unpack everything
             for row in zip(*pr1):
                 f1.write(' '.join(row) + '\n')
             for row in zip(*pr2):
-                f2.write(' '.join(row) + '\n')
+                f2.write(' '.join(row) + '\n') 
             for row in zip(*pr3):
                 f3.write(' '.join(row) + '\n')
             for row in zip(*pr4):

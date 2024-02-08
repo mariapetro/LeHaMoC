@@ -262,40 +262,37 @@ def dg_dt_BH(g_pr,nu,photons,f_k_i):
 #Using tabulated values for the cross section from Morejon et al. 2019 and
 #inelasticity values from Stecker, F. W. 1968, Phys. Rev. Lett., 21, 1016
 def dg_dt_pg(g_pr,nu,photons,E_th=145.*10**6.*eV):
-    C_pion = 1e-30*c*(m_pr*c**2)
+    C_pion = 5.*10**(-31.)*c
     dg_dt_pg = []
     for g_p in g_pr:
-        if g_p*h*nu[-1] > E_th: #photon's energy in proton's rest frame threshold argument
+        if g_p*h*nu[-1] > E_th:  #photon's energy in proton's rest frame threshold argument
             int_pg_losses = []
-            ε_bar_space = np.logspace(np.log10(E_th),np.log10(2.*g_p*h*nu[-1])+6,100)            
-            Cross_Section_pg_int = np.interp(np.log10(ε_bar_space),np.log10(np.array(Cross_Section_pg.Ph_En)[1:]*10**9.*eV),np.array(Cross_Section_pg.C_S)[1:])                     
-            kp_pg_int = np.interp(np.log10(ε_bar_space),np.log10(np.array(kp_pg.e)*10**9.*eV),np.array(kp_pg.k)*np.array(kp_pg.e)*10**9.*eV)
+            ε_bar_space = np.logspace(np.log10(E_th),np.log10(2.*g_p*h*nu[-1])+3,100)
+            Cross_Section_pg_int = np.interp(np.log10(ε_bar_space),np.log10(np.array(Cross_Section_pg.Ph_En)[1:]*10**9.*eV),np.array(Cross_Section_pg.C_S)[1:])
+            kp_pg_int = np.interp(np.log10(ε_bar_space),np.log10(np.array(kp_pg.e)*10**9.*eV),np.array(kp_pg.k))
             for ε_bar in ε_bar_space:
                 if ε_bar/(2.*g_p) < h*nu[-1]/2.:
-                    ε_prime_space = np.logspace(np.log10(ε_bar/(2.*g_p)),np.log10(h*nu[-1]/2.),30)
-                    dN_dVdε_prime = np.interp(np.log10(ε_prime_space),np.log10(h*np.array(nu)),np.array(photons/h))
+                    ε_prime_space = np.logspace(np.log10(ε_bar/(2.*g_p)),np.log10(h*nu[-1]),30)
+                    dN_dVdε_prime = 10**np.interp(np.log10(ε_prime_space),np.log10(h*np.array(nu)),np.log10(np.array(photons/h)))
                     int_pg_losses.append(np.trapz(dN_dVdε_prime/ε_prime_space,np.log(ε_prime_space)))
                 else:
                     int_pg_losses.append(0.)
-            dg_dt_pg.append(1./(2*g_p)*np.trapz(Cross_Section_pg_int*kp_pg_int*int_pg_losses,np.log(ε_bar_space)))
+            dg_dt_pg.append(1./(g_p)*np.trapz(Cross_Section_pg_int*kp_pg_int*int_pg_losses*ε_bar_space**2.,np.log(ε_bar_space)))
         else: 
             dg_dt_pg.append(0.) 
     return(np.multiply(dg_dt_pg,C_pion))
-
+    
 #proton loss rate from pg interaction (Eq. B3 in Begelman M.C. et al. 1990)
 # using the 2-step function approximation from Atoyan and Dermer 2003, ApJ
-def dg_dt_pg_approx(g_pr,nu,photons,E_th=145.*10**6.*eV): 
-#---- Κ*σ constant = 70 microbarns ----
+def dg_dt_pg_approx(g_pr,nu,photons,E_th=145.*10**6.*eV):
+#---- Κ*σ constant = 70 microbarns from Atoyan and Dermer 2003, ApJ--------
     dg_dt_pg = []
-    sigma_eff = 7.e-29
+    sigma_eff = 7e-29
     for g_p in g_pr:
         if g_p*h*nu[-1] > E_th:
-            sum_gp = 0.
-            photons_gp = np.interp(np.log10(E_th/h/g_p/2.),np.log10(nu),np.log10(photons))
-            index_gp = max(max(np.where(np.log10(nu) < np.log10(E_th/h/g_p/2.)))+1)
-            photons_temp_gp = np.insert(photons,index_gp, 10**photons_gp)
-            nu_temp_gp = np.insert(nu,index_gp, E_th/h/g_p/2.)
-            dg_dt_pg.append(sigma_eff*c/g_p*np.trapz(photons_temp_gp[index_gp:-1]*(g_p**2.-(E_th/(2.*h*nu_temp_gp[index_gp:-1])))*nu_temp_gp[index_gp:-1],np.log(nu_temp_gp[index_gp:-1])))
+            ε_prime_space = np.logspace(np.log10(E_th/(2.*g_p)),np.log10(h*nu[-1]/2.),100)
+            dN_dVdε_prime = np.interp(np.log10(ε_prime_space),np.log10(h*np.array(nu)),np.array(photons/h))
+            dg_dt_pg.append(sigma_eff*c/g_p*np.trapz(dN_dVdε_prime*(g_p**2.-(E_th/(2.*ε_prime_space)))*ε_prime_space,np.log(ε_prime_space)))
         else:
             dg_dt_pg.append(0.)
     return(dg_dt_pg)

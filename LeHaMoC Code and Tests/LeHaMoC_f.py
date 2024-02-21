@@ -268,7 +268,7 @@ def cs_BH_diff(E_,g_pr,g_el,k):
                         Y/(p_*p_p)*(2.*E_*(np.sin(np.arccos(cos_th_)))**2.*(3.*k+p_**2.*E_p)/D_**4.+(2.*E_**2*(E_**2.+E_p**2.)-7.*E_**2.-3.*E_*E_p-E_p**2.+1.)/D_**2.+k*(E_**2.-E_*E_p-1.)/D_)-
                         d_plus_T/(p_p*T)*(2./D_**2.-3.*k/D_-k*(p_**2.-k**2.)/(T**2.*D_))-2.*y_plus/D_)/p_
 
-#Interpolated integral of cross section 
+#Interpolated integral of BH cross-section 
 def interp_cs_BH_int(g_pr,g_el,nu_int_min, nu_int_max):
     
     g_pr_interp = np.logspace(np.log10(g_pr[0]),np.log10(g_pr[-1]),30)                          # Protons

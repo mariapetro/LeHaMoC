@@ -70,15 +70,15 @@ To configure the LeHaMoC simulation, you can customize various parameters in the
 
 16. **p_el**: Power-law index of the electron distribution.
 
-17. **L_el**: Luminosity of electrons in erg s^{-1}.
+17. **L_el**: Log10 of luminosity of electrons in erg s^{-1}.
 
 18. **p_pr**: Power-law index of the proton distribution.
 
-19. **L_pr**: Luminosity of protons in erg s^{-1}.
+19. **L_pr**: Log10 of luminosity of protons in erg s^{-1}.
 
 20. **Vexp**: Expansion velocity in units of the speed of light (c).
 
-21. **R0**: Common logarithm of the initial radius of the spherical blob in centimeters (cm).
+21. **R0**: Log10 of the initial radius of the spherical blob in centimeters (cm).
 
 22. **B0**: Magnetic field intensity in Gauss (G).
 
@@ -128,7 +128,7 @@ To configure the LeHaMoC simulation, you can customize various parameters in the
 
 45. **BB_flag**: Black body flag (1 to include, 0 to exclude).
 
-46. **BB_temperature**: Common logarithm of the Black body temperature in Kelvin (K).
+46. **BB_temperature**: Black body temperature in Kelvin (K).
 
 47. **GB_ext**: External Grey Body photon field flag (1 to include, 0 to exclude).
 
@@ -150,6 +150,14 @@ iii. Run the `LeHaMoC.py` code using a compatible Python interpreter. Make sure 
 
 
 iv. Once the simulation is complete, open the `Plotting_Tool.ipynb` notebook to visualize and analyze the simulation results. Follow the instructions provided in the notebook.
+
+## Output files
+The default output files are:
+
+1. Pairs_Distribution.txt (1st col: log10(gamma_e), 2nd col: log10(dN_e/(dV dgamma_e)) [cm^(-3)]
+2. Photons_Distribution.txt (1st col: log10(v), 2nd col: log10(dL_ph/(dv)) [erg s^(-1)]
+3. Protons_Distribution.txt (1st col: log10(gamma_p), 2nd col: log10(dN_p/(dV dgamma_p)) [cm^(-3)]
+4. Neutrinos_Distribution.txt (1st col: log10(v), 2nd col: log10(dN_nu/(dv dV)) [neutrinos cm^(-3) Hz^(-1)]
 
 ## Dependencies
 

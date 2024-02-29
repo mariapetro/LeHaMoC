@@ -142,7 +142,7 @@ def a_gg(nu_ic,nu_target,photons_target):
     x = h*nu_target/(m_el*c**2.)
     for nu_ic_el in nu_ic:
         x_IC = h*nu_ic_el/(m_el*c**2.)
-        x_space = np.logspace(np.log10(1.3/x_IC),np.log10(max(x)),50)
+        x_space = np.logspace(np.log10(1.3/x_IC),np.log10(max(x)),100)
         if x_space[0] < x_space[1]:                   
             photons_gg = 10**np.interp(np.log10(x_space),np.log10(x),np.log10(photons_target/(h)*m_el*c**2.))
             t_gg_m.append(np.trapz(0.652*sigmaT*((x_space*x_IC)**2.-1.)/(x_space*x_IC)**3.*np.log(x_space*x_IC)*x_space*photons_gg,np.log(x_space)))
@@ -154,7 +154,7 @@ def Q_ee_f(nu_target,photons_target,nu_ic,photons_IC,g,R0):
     Q_ee_temp=[]
     for g_e in g: 
         if (2.*g_e) > 1.:
-            x_prime = np.logspace(np.log10((2.*g_e)**(-1.)),np.log10(h*nu_target[-1]/(m_el*c**2.)))
+            x_prime = np.logspace(np.log10((2.*g_e)**(-1.)),np.log10(h*nu_target[-1]/(m_el*c**2.)), 100)
             n_ph_prime = 10**np.interp(np.log10(x_prime),np.log10(h*nu_target/(m_el*c**2.)),np.log10(photons_target*m_el*c**2./h))
             n_d_u = 2.*g_e*x_prime
             n_g = 10.**np.interp(np.log10(2.*g_e*m_el*c**2./h),np.log10(nu_ic),np.log10(photons_IC))

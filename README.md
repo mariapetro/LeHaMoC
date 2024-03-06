@@ -46,23 +46,23 @@ To configure the LeHaMoC simulation, you can customize various parameters in the
 
 4. **PL_inj**: Power law injection flag (1 to include, 0 to use distribution with exponential cut-offs).
 
-5. **g_min_el**: Minimum Lorentz factor of electrons on the grid.
+5. **g_min_el**: Minimum Lorentz factor of electrons on the grid in log10.
 
-6. **g_max_el**: Maximum Lorentz factor of electrons on the grid.
+6. **g_max_el**: Maximum Lorentz factor of electrons on the grid in log10.
 
-7. **g_el_PL_min**: Minimum Lorentz factor of power-law electrons.
+7. **g_el_PL_min**: Minimum Lorentz factor of power-law electrons in log10.
 
-8. **g_el_PL_max**: Maximum Lorentz factor of power-law electrons.
+8. **g_el_PL_max**: Maximum Lorentz factor of power-law electrons in log10.
 
 9. **grid_g_el**: Number of grid points between g_min_el and g_max_el.
 
-10. **g_min_pr**: Minimum Lorentz factor of protons on the grid.
+10. **g_min_pr**: Minimum Lorentz factor of protons on the grid in log10.
 
-11. **g_max_pr**: Maximum Lorentz factor of protons on the grid.
+11. **g_max_pr**: Maximum Lorentz factor of protons on the grid in log10.
 
-12. **g_pr_PL_min**: Minimum Lorentz factor of power-law protons.
+12. **g_pr_PL_min**: Minimum Lorentz factor of power-law protons in log10.
 
-13. **g_pr_PL_max**: Maximum Lorentz factor of power-law protons.
+13. **g_pr_PL_max**: Maximum Lorentz factor of power-law protons in log10.
 
 14. **grid_g_pr**: Number of grid points between g_min_pr and g_max_pr.
 

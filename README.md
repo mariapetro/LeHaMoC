@@ -142,7 +142,7 @@ To configure the LeHaMoC simulation, you can customize various parameters in the
 
 52. **s_ph**: Power-law index of the power-law photon field.
 
-53. **User_ph**: External user photon field flag (1 to include, 0 to exclude). If included, provide a .txt file named 'Photons_spec_user.txt' with columns (nu[Hz],dN/dVdnu[cm^{-3}Hz^{-1}]).
+53. **User_ph**: External user photon field flag (1 to include, 0 to exclude). If included, provide a .txt file named 'Photons_spec_user.txt' with columns (log(nu[Hz]),log(dN/dVdnu[cm^{-3}Hz^{-1}])).
 
 iii. Run the `LeHaMoC.py` code using a compatible Python interpreter. Make sure to have all necessary dependencies installed. Example:
 

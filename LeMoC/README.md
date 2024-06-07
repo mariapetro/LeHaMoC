@@ -1,6 +1,6 @@
 # LeMoC: Leptonic Modeling Code for High-Energy Astrophysical Sources
 
-LeMoC is the leptonic module of LeHaMoC, a code designed for modeling/simulating high-energy astrophysical sources. It simulates the behavior of relativistic pairs, protons interacting with magnetic fields and photons in a spherical region. The physical processes that are included are:
+LeMoC is the leptonic module of LeHaMoC, a code designed for modeling/simulating high-energy astrophysical sources. It simulates the behavior of relativistic pairs interacting with magnetic fields and photons in a spherical region. The physical processes that are included are:
 
 
 1. Synchrotron emission and self-absorption

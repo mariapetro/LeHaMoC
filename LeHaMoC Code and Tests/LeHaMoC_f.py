@@ -39,6 +39,7 @@ B_cr = 2*np.pi*m_el**2*c**3/(h*q)
 h_0 = 0.313
 r = 0.1458
 E_th_pi = 1.22*10**(-3.) #in TeV
+E_nu_space = np.logspace(10., 22., 50) * eV  # Neutrino  energies grid
 
 #Unints of rest mass in TeV
 x_m_pr = 938.272046*10**(-6.)

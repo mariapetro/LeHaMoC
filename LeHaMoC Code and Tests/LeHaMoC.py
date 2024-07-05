@@ -304,8 +304,8 @@ with open(out1,'w') as f1, open(out2,'w') as f2, open(out3,'w') as f3, open(out4
             dgdt_IC_el_m = dgdt_IC_el_p = np.zeros(len(g_el)-2)    
             
         if pg_pi_l_flag == 1.:
-            dgdt_pg_pi_m = np.array(f.dg_dt_pg_approx(g_pr_mp[0:-1],nu_tot,photons))/dg_pr
-            dgdt_pg_pi_p = np.array(f.dg_dt_pg_approx(g_pr_mp[1:],nu_tot,photons))/dg_pr
+            dgdt_pg_pi_m = np.array(f.dg_dt_pg(g_pr_mp[0:-1],nu_tot,photons))/dg_pr
+            dgdt_pg_pi_p = np.array(f.dg_dt_pg(g_pr_mp[1:],nu_tot,photons))/dg_pr
         else:
             dgdt_pg_pi_m = dgdt_pg_pi_p = np.zeros(len(g_pr)-2)
             

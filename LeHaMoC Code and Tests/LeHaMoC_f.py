@@ -226,7 +226,7 @@ def dg_dt_pg_approx(g_pr,nu,photons,E_th=145.*10**6.*eV):
         if g_p*h*nu[-1] > E_th:
             ε_prime_space = np.logspace(np.log10(E_th/(2.*g_p)),np.log10(h*nu[-1]/2.),100)
             dN_dVdε_prime = np.interp(np.log10(ε_prime_space),np.log10(h*np.array(nu)),np.array(photons/h))
-            dg_dt_pg.append(sigma_eff*c/g_p*np.trapz(dN_dVdε_prime*(g_p**2.-(E_th/(2.*ε_prime_space)))*ε_prime_space,np.log(ε_prime_space)))
+            dg_dt_pg.append(sigma_eff*c/g_p*np.trapz(dN_dVdε_prime*(g_p**2.-(E_th**2./(2.*ε_prime_space**2.)))*ε_prime_space,np.log(ε_prime_space)))
         else:
             dg_dt_pg.append(0.)
     return(dg_dt_pg)

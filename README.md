@@ -171,3 +171,23 @@ If you'd like to contribute to this project, feel free to fork the repository an
 ## License
 
 This project is licensed under the [GNU GPLv3]
+
+
+##zkd notes
+These notes are meant for to be erased once one decides how/if to use any changes.
+
+#### pyproject.toml
+- added this file to help with dependencies and to make it easier to install the code in a virtual environment
+- make sure to go through it a check if anything needs to be changed. 
+- This should make it easier to upload to pypi. If you do upload it, you may want to consider prebuilding wheels since it takes a while to install
+- to install in the directory, run `pip install -e .` in the directory where the pyproject.toml file is located
+
+#### tables
+- just a place to put tables for organization
+
+#### figs
+- just a place to put figures for organization
+
+
+#### simultion_params.py
+

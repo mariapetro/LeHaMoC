@@ -41,7 +41,6 @@ def run(sp: SimParam) -> SimOut:
     so.out2 = out_s + "Photons_Distribution.txt"
     so.out3 = out_s + "Protons_Distribution.txt"
     so.out4 = out_s + "Neutrinos_Distribution.txt"
-    so.out5 = out_s + "Compton_Distribution.txt"
 
     start_time = time.time()
 
@@ -54,6 +53,7 @@ def run(sp: SimParam) -> SimOut:
     # initialization of the electron Lorentz factor array
     grid_size = sp.grid_g_el
     g_el = np.logspace(sp.g_min_el,sp.g_max_el,int(grid_size))
+    so.g_el = g_el
     g_el_mp = np.array([(g_el[im+1]+g_el[im-1])/2. for im in range(0,len(g_el)-1)])
     dg_el = np.array([((g_el[im+1])-(g_el[im-1]))/2. for im in range(1,len(g_el)-1)])   # delta gamma
     dg_l_el = np.log(g_el[1])-np.log(g_el[0]) # logarithmic delta gamma
@@ -72,6 +72,7 @@ def run(sp: SimParam) -> SimOut:
     nu_syn = np.logspace(7.5,np.log10(7.*f.nu_c(g_el[-1],sp.B0))+1.4,int(grid_size/2))
     nu_ic = np.logspace(10.,30.,int(grid_size/2))
     nu_tot = np.logspace(np.log10(nu_syn[0]),np.log10(nu_ic[-1]),int(sp.grid_nu))
+    so.nu_tot = nu_tot
     a_gg_f = np.zeros(len(nu_ic))
 
     #External grey body (GB) photon field (if GB_ext = 1 then photon spectrum is BB with the given temperature)
@@ -131,7 +132,7 @@ def run(sp: SimParam) -> SimOut:
 
 
     # Solution of the PDEs
-    for i in tqdm(range(int(sp.time_end)),desc="Progress...",colour="green"):
+    for _ in tqdm(range(int(sp.time_end)),desc="Progress...",colour="green"):
     # while time_real <  time_end*R0/c:
         time_real += dt
         Radius = f.R(sp.R0,time_real,sp.time_init,sp.Vexp)
@@ -225,7 +226,6 @@ def run(sp: SimParam) -> SimOut:
             day_counter=day_counter+sp.step_alg*sp.R0/c
             photons = f.photons_tot(nu_syn,nu_bb,photons_syn,nu_ic,photons_IC,nu_tot,dN_dVdnu_BB*f.Volume(Radius),dN_dVdnu_pl*f.Volume(Radius),dN_dVdnu_user*f.Volume(Radius))/f.Volume(Radius)
             so.Spec_temp_tot.append(np.multiply(photons,h*nu_tot**2.)*4.*np.pi/3.*Radius**2.*c)
-            so.g_el.append(g_el)
             so.dN_el_dVdg_el.append(N_el/f.Volume(Radius))
 
     print("--- %s seconds ---" % "{:.2f}".format((time.time() - start_time)))
@@ -236,3 +236,4 @@ if __name__ == "__main__":
     filename= "./params/test_params.txt"
     simpam = sp.load_param_file(file_name=filename)
     so = run(simpam)
+    sp.save_output(so)

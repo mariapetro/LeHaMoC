@@ -117,20 +117,33 @@ class SimulationOutput:
     out4: str = ""
     out5: str = ""
 def save_output(so: SimulationOutput):
-    pr1 = [[str(el_list) for el_list in np.log10(so.g_el)], [str(el_list) for el_list in np.log10(so.dN_el_dVdg_el)]]
-    pr2 = [[str(el_list) for el_list in np.log10(so.nu_tot)], [str(el_list) for el_list in np.log10(so.Spec_temp_tot)]]
-    pr3 = [[str(el_list) for el_list in np.log10(so.g_pr)], [str(el_list) for el_list in np.log10(so.dN_pr_dVdg_pr)]]
-    pr4 = [[str(el_list) for el_list in np.log10(so.nu_nu)], [str(el_list) for el_list in np.log10(so.N_nu)]]
-    pr5 = [[str(el_list) for el_list in np.log10(so.nu_ic)], [str(el_list) for el_list in np.log10(so.Spec_temp_ic)]]
+    dn_el_str = np.log10(so.dN_el_dVdg_el).astype(str)
+    gel_str= np.log10(so.g_el).astype(str)
 
-    with open(so.out1, 'w') as f1, open(so.out2, 'w') as f2, open(so.out3, 'w') as f3, open(so.out4, 'w') as f4, open(so.out5, 'w') as f5:
-        for row in zip(*pr1):
-            f1.write(' '.join(row) + '\n')
-        for row in zip(*pr2):
-            f2.write(' '.join(row) + '\n')
-        for row in zip(*pr3):
-            f3.write(' '.join(row) + '\n')
-        for row in zip(*pr4):
-            f4.write(' '.join(row) + '\n')
-        for row in zip(*pr5):
-            f5.write(' '.join(row) + '\n')
+    photons_str = np.log10(so.Spec_temp_tot).astype(str)
+    nu_str = np.log10(so.nu_tot).astype(str)
+
+    protons_str = np.log10(so.dN_pr_dVdg_pr).astype(str)
+    gpr_str = np.log10(so.g_pr).astype(str)
+
+    neu_str = np.log10(so.N_nu).astype(str)
+    neu_nu_str = np.log10(so.nu_nu).astype(str)
+
+
+    with open(so.out1, 'w') as f1, open(so.out2, 'w') as f2, open(so.out3, 'w') as f3, open(so.out4, 'w') as f4:
+        for i in range(dn_el_str.shape[0]):
+            for j in range(dn_el_str.shape[1]):
+                f1.write(f'{gel_str[j]} {dn_el_str[i,j]}\n')
+            f1.write(f'\n')
+        for i in range(photons_str.shape[0]):
+            for j in range(photons_str.shape[1]):
+                f2.write(f'{nu_str[j]} {photons_str[i, j]}\n')
+            f2.write(f'\n')
+        for i in range(protons_str.shape[0]):
+            for j in range(protons_str.shape[1]):
+                f3.write(f'{gpr_str[j]} {protons_str[i, j]}\n')
+            f3.write(f'\n')
+        for i in range(neu_str.shape[0]):
+            for j in range(neu_str.shape[1]):
+                f4.write(f'{neu_nu_str[j]} {neu_str[i, j]}\n')
+            f4.write(f'\n')

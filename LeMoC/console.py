@@ -14,7 +14,8 @@ def main_cli():
     fileName = sys.argv[1]
 
     simpam = sp.load_param_file(file_name=fileName)
-    LC.run(simpam)
+    so = LC.run(simpam)
+    sp.save_output(so)
 
 
 

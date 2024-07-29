@@ -26,7 +26,7 @@ if len(sys.argv) != 4:
 # Read from terminal code module -- leptonic or hadronic
 flag_c = sys.argv[1] 
 
-if flag_c == 'LeMoC': 
+if flag_c == 'LeMoC':
     from Code import LeMoC as numcode 
 if flag_c == 'LeHaMoC': 
     from Code import LeHaMoC as numcode 

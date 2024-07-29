@@ -171,3 +171,42 @@ If you'd like to contribute to this project, feel free to fork the repository an
 ## License
 
 This project is licensed under the [GNU GPLv3]
+
+
+## zkd notes
+These notes are meant for to be erased once one decides how/if to use any changes.
+
+- most of the changes focus on making the code both usable as a command line tool an a library. Some organization but I left it mostly as is. I also changed items to match the current version of the code rather than the future hadronic inclusions. it should be easy to update when you are ready.
+
+#### pyproject.toml
+- added this file to help with dependencies and to make it easier to install the code in a virtual environment
+- make sure to go through it a check if anything needs to be changed. 
+- This should make it easier to upload to pypi. If you do upload it, you may want to consider prebuilding wheels since it takes a while to install
+- to install in the directory, run `pip install -e .` in the directory where the pyproject.toml file is located
+- this also contains the information for setting up the command line tool
+
+#### tables
+- just a place to put tables for organization
+
+#### figs
+- just a place to put figures for organization
+
+#### constants.pu
+- a file for constants so that they don't have to be added to each file
+
+#### simultion_params.py
+- this file has the SimulationParams dataclass. This contains on the paramaters for LeHaMoC. This is meant to be used to make it easier to pass parameters to the LeHaMoC. It also includes severl helper functions for loading and saving to param files
+- it also includes SimulationOutput that serves as in output class. Still write to files as needed
+
+#### LeMoC.py
+- moved constants to constants file
+- added lines for adding tables
+- changed to a function
+- added classes mentioned above
+
+
+#### LeHaMoC_f.py
+- moved constants to constants file
+
+#### zkd_example.py
+- something that you may want to remove before merging. It just shows how to use the code as library rather than a command line tool.

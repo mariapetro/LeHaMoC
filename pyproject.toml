@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "LeMoC"
+version = "0.1.0"
+description = "LeHaMoC is a leptohadronic modeling code designed for simulating high-energy astrophysical sources. It simulates the behavior of relativistic pairs, protons interacting with magnetic fields and photons in a spherical region."
+authors = [
+    { name="author", email="author@example.com" }
+]
+license = { text = "GPL-3.0-only" }
+readme = "README.md"
+requires-python = ">=3.9.12"
+dependencies = [
+    "numpy>=1.23,<2",
+    "astropy>=5.0,<6",
+    "matplotlib>=3.5,<4",
+    "pandas>=1.4,<2",
+    "tqdm>=4.64,<5",
+    "shapely==1.7.1",
+    "scipy>=1.7,<2"
+]
+
+[project.urls]
+homepage = "https://github.com/mariapetro/LeHaMoC"
+repository = "https://github.com/mariapetro/LeHaMoC"
+
+[project.scripts]
+LeHaMoC = "console:main_cli"
+
+[tool.setuptools]
+package-dir = {"" = "LeMoC"}
+
+
+

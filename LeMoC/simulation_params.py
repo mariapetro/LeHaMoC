@@ -1,5 +1,5 @@
 from dataclasses import dataclass, field, fields
-from typing import Any
+from typing import Any,List
 import numpy as np
 
 @dataclass
@@ -60,6 +60,7 @@ class SimulationParams:
     out_name: str = field(default="test", metadata={'comment': 'Output file name'})
 
 
+
 def create_param_file(params: SimulationParams, file_name: str,with_comment=False):
     with open(file_name, 'w') as file:
         for f in fields(params):
@@ -91,9 +92,45 @@ def load_param_file(file_name: str) -> SimulationParams:
                 continue
             param_name, param_value = line.split('=', 1)
             param_name = param_name.strip()
-            param_value = param_value.split('#')[0].strip()
+            param_value = param_value.split('#')[0].strip() #removes comments
             for field in fields(params):
                 if field.name == param_name:
                     setattr(params, param_name, parse_value(param_value, field.type))
                     break
     return params
+
+@dataclass
+class SimulationOutput:
+    g_el: List[List[float]] = field(default_factory=lambda: np.zeros((0, 0)).tolist())
+    dN_el_dVdg_el: List[List[float]] = field(default_factory=lambda: np.zeros((0, 0)).tolist())
+    nu_tot: List[List[float]] = field(default_factory=lambda: np.zeros((0, 0)).tolist())
+    Spec_temp_tot: List[List[float]] = field(default_factory=lambda: np.zeros((0, 0)).tolist())
+    g_pr: List[List[float]] = field(default_factory=lambda: np.zeros((0, 0)).tolist())
+    dN_pr_dVdg_pr: List[List[float]] = field(default_factory=lambda: np.zeros((0, 0)).tolist())
+    nu_nu: List[List[float]] = field(default_factory=lambda: np.zeros((0, 0)).tolist())
+    N_nu: List[List[float]] = field(default_factory=lambda: np.zeros((0, 0)).tolist())
+    nu_ic: List[List[float]] = field(default_factory=lambda: np.zeros((0, 0)).tolist())
+    Spec_temp_ic: List[List[float]] = field(default_factory=lambda: np.zeros((0, 0)).tolist())
+    out1: str = ""
+    out2: str = ""
+    out3: str = ""
+    out4: str = ""
+    out5: str = ""
+def save_output(so: SimulationOutput):
+    pr1 = [[str(el_list) for el_list in np.log10(so.g_el)], [str(el_list) for el_list in np.log10(so.dN_el_dVdg_el)]]
+    pr2 = [[str(el_list) for el_list in np.log10(so.nu_tot)], [str(el_list) for el_list in np.log10(so.Spec_temp_tot)]]
+    pr3 = [[str(el_list) for el_list in np.log10(so.g_pr)], [str(el_list) for el_list in np.log10(so.dN_pr_dVdg_pr)]]
+    pr4 = [[str(el_list) for el_list in np.log10(so.nu_nu)], [str(el_list) for el_list in np.log10(so.N_nu)]]
+    pr5 = [[str(el_list) for el_list in np.log10(so.nu_ic)], [str(el_list) for el_list in np.log10(so.Spec_temp_ic)]]
+
+    with open(so.out1, 'w') as f1, open(so.out2, 'w') as f2, open(so.out3, 'w') as f3, open(so.out4, 'w') as f4, open(so.out5, 'w') as f5:
+        for row in zip(*pr1):
+            f1.write(' '.join(row) + '\n')
+        for row in zip(*pr2):
+            f2.write(' '.join(row) + '\n')
+        for row in zip(*pr3):
+            f3.write(' '.join(row) + '\n')
+        for row in zip(*pr4):
+            f4.write(' '.join(row) + '\n')
+        for row in zip(*pr5):
+            f5.write(' '.join(row) + '\n')

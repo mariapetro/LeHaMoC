@@ -188,6 +188,11 @@ These notes are meant for to be erased once one decides how/if to use any change
 #### figs
 - just a place to put figures for organization
 
+#### constants.pu
+- a file for constants so that they don't have to be added to each file
 
 #### simultion_params.py
+- this file has the SimulationParams dataclass. This contains on the paramaters for LeHaMoC. This is meant to be used to make it easier to pass parameters to the LeHaMoC. It also includes severl helper functions for loading and saving to param files
+
+
 

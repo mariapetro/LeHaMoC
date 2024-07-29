@@ -26,6 +26,9 @@ dependencies = [
 homepage = "https://github.com/mariapetro/LeHaMoC"
 repository = "https://github.com/mariapetro/LeHaMoC"
 
-[tool.setuptools]
-packages = ["LeMoC", "Fit_emcee"]
+[project.scripts]
+LeHaMoC = "LeMoC.console:main_cli"
+
+[tool.setuptools.packages]
+find = {}
 

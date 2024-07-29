@@ -7,7 +7,7 @@ Created on Fri Aug 11 19:32:57 2023
 """
 
 from shapely.geometry import LineString
-from LeMoC.constants import *
+from constants import *
 
 #######################
 #functions# 

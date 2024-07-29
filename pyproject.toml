@@ -1,9 +1,9 @@
 [build-system]
-requires = ["setuptools>=42", "wheel"]
+requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "LeHaMoC"
+name = "LeMoC"
 version = "0.1.0"
 description = "LeHaMoC is a leptohadronic modeling code designed for simulating high-energy astrophysical sources. It simulates the behavior of relativistic pairs, protons interacting with magnetic fields and photons in a spherical region."
 authors = [
@@ -27,8 +27,10 @@ homepage = "https://github.com/mariapetro/LeHaMoC"
 repository = "https://github.com/mariapetro/LeHaMoC"
 
 [project.scripts]
-LeHaMoC = "LeMoC.console:main_cli"
+LeHaMoC = "console:main_cli"
 
-[tool.setuptools.packages]
-find = {}
+[tool.setuptools]
+package-dir = {"" = "LeMoC"}
+
+
 

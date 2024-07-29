@@ -1,6 +1,6 @@
 import sys
-import LeMoC.simulation_params as sp
-import LeMoC.LeMoC as LC
+import simulation_params as sp
+import LeMoC as LC
 
 
 def main_cli():

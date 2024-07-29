@@ -15,14 +15,13 @@
 
 from astropy.modeling.models import BlackBody
 import pandas as pd
-import sys, os, time
+import os, time
 from tqdm import tqdm
-from pathlib import Path
 
-from LeMoC.constants import *
-from LeMoC.simulation_params import SimulationParams as SimParam
-from LeMoC.simulation_params import SimulationOutput as SimOut
-from LeMoC import LeHaMoC_f as f  # imports
+from constants import *
+from simulation_params import SimulationParams as SimParam
+from simulation_params import SimulationOutput as SimOut
+import LeHaMoC_f as f  # imports
 
 
 #######################
@@ -132,7 +131,7 @@ def run(sp: SimParam) -> SimOut:
 
 
     # Solution of the PDEs
-    for i in tqdm(range(int(sp.time_end)),desc="Progress..."):
+    for i in tqdm(range(int(sp.time_end)),desc="Progress...",colour="green"):
     # while time_real <  time_end*R0/c:
         time_real += dt
         Radius = f.R(sp.R0,time_real,sp.time_init,sp.Vexp)
@@ -229,9 +228,11 @@ def run(sp: SimParam) -> SimOut:
             so.g_el.append(g_el)
             so.dN_el_dVdg_el.append(N_el/f.Volume(Radius))
 
-        print("--- %s seconds ---" % "{:.2f}".format((time.time() - start_time)))
-        return so
+    print("--- %s seconds ---" % "{:.2f}".format((time.time() - start_time)))
+    return so
 
 if __name__ == "__main__":
-    simpam = SimParam.load_param_file(file_name=fileName)
-    run(simpam)
+    import simulation_params as sp
+    filename= "./params/test_params.txt"
+    simpam = sp.load_param_file(file_name=filename)
+    so = run(simpam)

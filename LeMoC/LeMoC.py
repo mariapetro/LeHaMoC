@@ -231,9 +231,3 @@ def run(sp: SimParam) -> SimOut:
     print("--- %s seconds ---" % "{:.2f}".format((time.time() - start_time)))
     return so
 
-if __name__ == "__main__":
-    import simulation_params as sp
-    filename= "./params/test_params.txt"
-    simpam = sp.load_param_file(file_name=filename)
-    so = run(simpam)
-    sp.save_output(so)

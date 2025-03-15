@@ -157,7 +157,7 @@ The default output files are:
 1. Pairs_Distribution.txt (1st col: log10(gamma_e), 2nd col: log10(dN_e/(dV dgamma_e)) [cm^(-3)]
 2. Photons_Distribution.txt (1st col: log10(v), 2nd col: log10(dL_ph/(dv)) [erg s^(-1)]
 3. Protons_Distribution.txt (1st col: log10(gamma_p), 2nd col: log10(dN_p/(dV dgamma_p)) [cm^(-3)]
-4. Neutrinos_Distribution.txt (1st col: log10(v), 2nd col: log10(dN_nu/(dv dV)) [neutrinos cm^(-3) Hz^(-1)]
+4. Neutrinos_Distribution.txt (1st col: log10(v), 2nd col: log10(dN_nu/(dv)) [neutrinos Hz^(-1)]
 
 ## Dependencies
 

@@ -121,7 +121,9 @@ def LeMoC(params, fileName):
     nu_tot = np.logspace(np.log10(nu_syn[0]),np.log10(nu_ic[-1]),int(grid_nu))
     a_gg_f = np.zeros(len(nu_ic))
 
-#External grey body (GB) photon field (if GB_ext = 1 then photon spectrum is BB with the given temperature)
+#External black body (BB) or grey body (GB) photon field
+#(for a BB field, set BB_flag = 1 and GB_ext = 1)
+#(for a GB field, set BB_flag = 1 and GB_ext != 1)
 #Units (nu,dN/dVdnu)
     if BB_flag == 0.:
         dN_dVdnu_BB = np.zeros(2)

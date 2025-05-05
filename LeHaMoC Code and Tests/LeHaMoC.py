@@ -173,7 +173,9 @@ nu_ic = np.logspace(15.,32.,int(grid_size_el/2))
 nu_nu = np.logspace(10.,22.,50)*eV/h
 nu_tot = np.logspace(np.log10(nu_syn[0]),np.log10(max(nu_ic[-1],nu_syn[-1])),int(grid_nu))
 
-#External grey body (GB) photon field (if GB_ext = 1 then photon spectrum is BB with the given temperature)
+#External black body (BB) or grey body (GB) photon field
+#(for a BB field, set BB_flag = 1 and GB_ext = 1)
+#(for a GB field, set BB_flag = 1 and GB_ext != 1)
 #Units (nu,dN/dVdnu)
 if BB_flag == 0.:
     dN_dVdnu_BB = np.zeros(2)

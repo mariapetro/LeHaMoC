@@ -159,7 +159,7 @@ To configure the LeHaMoC simulation, you can customize various parameters in the
 
 46. **BB_temperature**: Common logarithm of the Black body temperature in Kelvin (K).
 
-47. **GB_ext**: External Grey Body photon field flag (1 to include, 0 to exclude).
+47. **GB_ext**: External Grey Body photon field energy density in erg cm^{-3} (BB_flag = 1 to include).
 
 48. **PL_flag**: External power-law photon field flag.
 

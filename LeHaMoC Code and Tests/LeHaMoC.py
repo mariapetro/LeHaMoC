@@ -234,6 +234,7 @@ dnu_ic = np.array([(nu_ic[nu_ind+1]-nu_ic[nu_ind-1])/2. for nu_ind in range(1,le
 
 a_gg_f_syn = np.zeros(len(nu_syn)-2)
 a_gg_f_ic = np.zeros(len(nu_ic)-2)
+a_gg_f_temp = np.zeros(len(nu_tot)-2)
 
 if PL_inj == 1.:
     el_inj[index_PL_min_el:index_PL_max_el] = f.Q_el_Lum(f.Lum_e_inj(comp_el,Radius),p_el,g_el[index_PL_min_el],g_el[index_PL_max_el])*g_el[index_PL_min_el:index_PL_max_el]**(-p_el)/f.Volume(Radius)
@@ -256,6 +257,7 @@ Protons_lum = []
 
 N_el = el_inj.copy()*f.Volume(R0)
 N_el[0] = N_el[-1] = 10**(-260.) # boundary conditions 
+interv = 0. # counter 
 
 if pg_BH_emis_flag == 1.:
     intrp_cs_m,intrp_cs_p,max_intrp_cs_m,max_intrp_cs_p = f.interp_cs_BH_int(np.logspace(0.,8.,50),np.logspace(0.,10.,50),nu_tot[0],nu_tot[-1])
@@ -411,13 +413,26 @@ with open(out1,'w') as f1, open(out2,'w') as f2, open(out3,'w') as f3, open(out4
         else: 
             a_gg_f_ic = np.array(f.a_gg(nu_ic,nu_tot,photons)[1:-1])
             a_gg_f_syn = np.array(f.a_gg(nu_syn,nu_tot,photons)[1:-1])
-            Q_ee = f.Q_ee_f(nu_tot,photons,nu_tot,photons,g_el,Radius)[1:-1] 
+            a_gg_f_temp = np.array(f.a_gg(nu_tot,nu_tot,photons)[1:-1]) 
+            
+            if interv < 2.:
+                photons_temp = photons*f.Volume(Radius)
+                V1 = np.zeros(len(nu_tot)-2)
+                V2 = 1.+dt*(a_gg_f_temp*c)
+                V3 = np.zeros(len(nu_tot)-2)
+                S_ij = photons_temp[1:-1]
+                photons_temp[1:-1] = f.thomas(V1, V2, V3, S_ij)
+                photons_temp[1:-1] = photons_temp[1:-1]/f.Volume(Radius)
+                Q_ee = f.Q_ee_f(nu_tot,photons_temp,nu_tot,photons_temp,g_el,Radius)[1:-1]
+            else:
+                Q_ee = f.Q_ee_f(nu_tot,photons,nu_tot,photons,g_el,Radius)[1:-1]
             
         V1 = np.zeros(len(nu_nu)-2)
         V2 = 1.+dt*(c/Radius*np.ones(len(nu_nu)-2))
         V3 = np.zeros(len(nu_nu)-2)
         S_ij = N_nu[1:-1]+Q_pp_nu+Q_pg_nu
         N_nu[1:-1] = f.thomas(V1, V2, V3, S_ij)
+        interv += 1
         
         if day_counter<time_real:            
             day_counter=day_counter+step_alg*R0/c

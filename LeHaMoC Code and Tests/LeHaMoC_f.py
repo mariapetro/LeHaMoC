@@ -95,8 +95,11 @@ def nu_c(gamma,B):
     return 3./(4.*np.pi)*q*B/(m_el*c)*gamma**2.
 
 #Synchrotron emissivity dN/dVdνdtdΩ (Relativistic Jets from Active Galactic Nuclei, by M. Boettcher, D.E. Harris, ahd H. Krawczynski, Berlin: Wiley, 2012)
-def Q_syn_space(Np,B,nu,a_cr,C_syn,g):                       
-    syn_em = C_syn*B**(2./3.)*nu**(-2./3.)*(np.trapz(Np*g**(1./3.)*np.exp(-nu/(a_cr*g**2.)), np.log(g)))
+def Q_syn_space(Np,B,nu,a_cr,C_syn,g, m):
+    integrand = Np*g**(1./3.)*np.exp(-nu/(a_cr*g**2.))
+    mask = m*c**2*g < h*nu # check if the photon energy is greater than the particle energy
+    integrand[mask] = 0  # set equal to zero the emissivity for particles that would emit photons with energy higher than their own energy
+    syn_em = C_syn*B**(2./3.)*nu**(-2./3.)*(np.trapz(integrand, np.log(g)))
     return syn_em
 
 #Synchrotron self absorption coefficient (High Energy Radiation from Black Holes: Gamma Rays, Cosmic Rays, and Neutrinos by Charles D. Dermer and Govind Menon. Princeton Univerisity Press, 2009)

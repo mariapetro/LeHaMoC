@@ -367,8 +367,8 @@ with open(out1,'w') as f1, open(out2,'w') as f2, open(out3,'w') as f3, open(out4
         dN_el_dVdg_el = np.array(N_el/f.Volume(Radius))
          
         if Syn_emis_flag == 1.:
-            Q_Syn_el = np.array([f.Q_syn_space(dN_el_dVdg_el,M_F,nu_syn[nu_ind],a_cr_el,C_syn_el,g_el) for nu_ind in range(1,len(nu_syn)-1)]) 
-            Q_Syn_pr = np.array([f.Q_syn_space(dN_pr_dVdg_pr,M_F,nu_syn[nu_ind],a_cr_pr,C_syn_pr,g_pr) for nu_ind in range(1,len(nu_syn)-1)])
+            Q_Syn_el = np.array([f.Q_syn_space(dN_el_dVdg_el,M_F,nu_syn[nu_ind],a_cr_el,C_syn_el,g_el, m_el) for nu_ind in range(1,len(nu_syn)-1)]) 
+            Q_Syn_pr = np.array([f.Q_syn_space(dN_pr_dVdg_pr,M_F,nu_syn[nu_ind],a_cr_pr,C_syn_pr,g_pr, m_pr) for nu_ind in range(1,len(nu_syn)-1)])
         else: 
             Q_Syn_el = Q_Syn_pr = np.zeros(len(nu_syn)-2)
             

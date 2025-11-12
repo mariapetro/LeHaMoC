@@ -85,7 +85,10 @@ def nu_c_pr(gamma,B):
 #Synchrotron emissivity dN/dVd\nudtd\Omega (Relativistic Jets from Active Galactic Nuclei, by M. Boettcher, D.E. Harris, ahd H. Krawczynski, Berlin: Wiley, 2012)
 def Q_syn_space(Np,B,nu,a_cr,g):                      
     C_syn = sigmaT*c/(h*24.*np.pi**2.*0.8975)*(4.*np.pi*m_el*c/(3.*q))**(4./3.)
-    syn_em = C_syn*B**(2./3.)*nu**(-2./3.)*(np.trapz(Np*g**(1./3.)*np.exp(-nu/(a_cr*g**2.)), np.log(g)))
+    integrand = Np*g**(1./3.)*np.exp(-nu/(a_cr*g**2.))
+    mask = m_el*c**2*g < h*nu # check if the photon energy is greater than the particle energy
+    integrand[mask] = 0  # set equal to zero the emissivity for particles that would emit photons with energy higher than their own energy
+    syn_em = C_syn*B**(2./3.)*nu**(-2./3.)*(np.trapz(integrand, np.log(g)))
     return syn_em
 
 #Synchrotron emissivity dN/dVd\nudtd\Omega for protons (Relativistic Jets from Active Galactic Nuclei, by M. Boettcher, D.E. Harris, ahd H. Krawczynski, Berlin: Wiley, 2012)

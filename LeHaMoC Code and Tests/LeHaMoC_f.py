@@ -662,7 +662,7 @@ def cor_factor_syn_el(g_el_space,R0,B0,p_el,Lum_e_injected):
         S_ij = N_el[1:-1]+el_inj[1:-1].copy()*dt
         N_el[1:-1] = thomas(V1, V2, V3, S_ij)
 
-        Q_Syn_el = [Q_syn_space(N_el/Volume(Radius),B,nu_syn[nu_ind],a_cr_el,C_syn_el,g_el) for nu_ind in range(len(nu_syn)-1)] 
+        Q_Syn_el = [Q_syn_space(N_el/Volume(Radius),B,nu_syn[nu_ind],a_cr_el,C_syn_el,g_el,m_el) for nu_ind in range(len(nu_syn)-1)] 
 
         V1 = np.zeros(len(nu_syn)-2)
         V2 = 1.+dt*(c/R0*np.ones(len(nu_syn)-2))

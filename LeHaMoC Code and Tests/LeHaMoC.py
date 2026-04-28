@@ -291,10 +291,10 @@ with open(out1,'w') as f1, open(out2,'w') as f2, open(out3,'w') as f3, open(out4
         if Syn_l_flag == 1.:
             b_syn_el = const_el*M_F**2.
             b_syn_pr = const_pr*M_F**2.
-            dgdt_Syn_el_m = b_syn_el*np.divide(np.power(g_el_mp[0:-1],2.),dg_el)
-            dgdt_Syn_el_p = b_syn_el*np.divide(np.power(g_el_mp[1:],2.),dg_el)
-            dgdt_Syn_pr_m = b_syn_pr*np.divide(np.power(g_pr_mp[0:-1],2.),dg_pr)
-            dgdt_Syn_pr_p = b_syn_pr*np.divide(np.power(g_pr_mp[1:],2.),dg_pr)
+            dgdt_Syn_el_m = b_syn_el*np.divide(np.power(g_el_mp[0:-1],2.)-1,dg_el)
+            dgdt_Syn_el_p = b_syn_el*np.divide(np.power(g_el_mp[1:],2.)-1,dg_el)
+            dgdt_Syn_pr_m = b_syn_pr*np.divide(np.power(g_pr_mp[0:-1],2.)-1,dg_pr)
+            dgdt_Syn_pr_p = b_syn_pr*np.divide(np.power(g_pr_mp[1:],2.)-1,dg_pr)
         else :
             dgdt_Syn_el_m = dgdt_Syn_el_p = np.zeros(len(g_el)-2)  
             dgdt_Syn_pr_m = dgdt_Syn_pr_p = np.zeros(len(g_pr)-2)  
@@ -302,8 +302,8 @@ with open(out1,'w') as f1, open(out2,'w') as f2, open(out3,'w') as f3, open(out4
         if IC_l_flag == 1.:
             U_ph = f.U_ph_f(g_el,nu_tot,photons,Radius)
             b_Com_el = 4./3.*sigmaT*np.multiply(c,U_ph)/(m_el*c**2.)
-            dgdt_IC_el_m = b_Com_el[1:-1]*np.divide(np.power(g_el_mp[0:-1],2.),dg_el)
-            dgdt_IC_el_p = b_Com_el[2:]*np.divide(np.power(g_el_mp[1:],2.),dg_el)
+            dgdt_IC_el_m = b_Com_el[1:-1]*np.divide(np.power(g_el_mp[0:-1],2.)-1,dg_el)
+            dgdt_IC_el_p = b_Com_el[2:]*np.divide(np.power(g_el_mp[1:],2.)-1,dg_el)
         else:
             dgdt_IC_el_m = dgdt_IC_el_p = np.zeros(len(g_el)-2)    
             
